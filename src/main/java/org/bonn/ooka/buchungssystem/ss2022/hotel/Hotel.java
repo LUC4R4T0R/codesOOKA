@@ -1,4 +1,4 @@
-package org.bonn.ooka.buchungssystem.ss2022;
+package org.bonn.ooka.buchungssystem.ss2022.hotel;
 
 public class Hotel {
     private int id;
@@ -6,6 +6,23 @@ public class Hotel {
     private String ort;
     private int sterne;
     private String kontact;
+
+    public Hotel(String id, String name, String ort){
+        this.id = Integer.parseInt(id);
+        this.name = name;
+        this.ort = ort;
+    }
+
+    @Override
+    public String toString() {
+        return "Hotel{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", ort='" + ort + '\'' +
+                ", sterne=" + sterne +
+                ", kontact='" + kontact + '\'' +
+                '}';
+    }
 
     public int getId() {
         return id;

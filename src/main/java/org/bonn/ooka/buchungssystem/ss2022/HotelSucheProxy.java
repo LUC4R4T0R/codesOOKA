@@ -1,5 +1,7 @@
 package org.bonn.ooka.buchungssystem.ss2022;
 
+import org.bonn.ooka.buchungssystem.ss2022.hotel.Hotel;
+
 public class HotelSucheProxy implements HotelSuche{
 
     private HotelRetrieval hotelRetrieval;
@@ -13,5 +15,9 @@ public class HotelSucheProxy implements HotelSuche{
 
     public void openSession(){
         this.hotelRetrieval.openSession();
+    }
+
+    public void closeSession(){
+        this.hotelRetrieval.closeSession();
     }
 }
