@@ -12,7 +12,7 @@ public class HotelRetrieval implements HotelSuche{
     private final Caching caching;
 
     public HotelRetrieval(Caching caching){
-        this.caching = caching;
+        this.caching = new CachingProxy(caching);
         this.dbAccess = new DBAccess();
     }
 

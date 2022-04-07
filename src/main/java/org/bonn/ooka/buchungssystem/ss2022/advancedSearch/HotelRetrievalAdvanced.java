@@ -1,6 +1,7 @@
 package org.bonn.ooka.buchungssystem.ss2022.advancedSearch;
 
 import org.bonn.ooka.buchungssystem.ss2022.Caching;
+import org.bonn.ooka.buchungssystem.ss2022.CachingProxy;
 import org.bonn.ooka.buchungssystem.ss2022.DBAccess;
 import org.bonn.ooka.buchungssystem.ss2022.hotel.Hotel;
 
@@ -14,7 +15,7 @@ public class HotelRetrievalAdvanced implements HotelSucheAdvanced {
     private final Caching caching;
 
     public HotelRetrievalAdvanced(Caching caching){
-        this.caching = caching;
+        this.caching = new CachingProxy(caching);
         this.dbAccess = new DBAccess();
     }
 
