@@ -2,7 +2,6 @@ package org.bonn.ooka.buchungssystem.ss2022;
 
 import org.bonn.ooka.buchungssystem.ss2022.hotel.Hotel;
 
-import javax.management.ObjectName;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,8 +19,7 @@ public class HotelRetrieval implements HotelSuche{
     public Hotel[] getHotelByName(String name) {
         List<Object> objects = this.caching.fetchResult(name);
         if(objects != null) {
-            List<Hotel> cachedHotels = objects.stream().map(o -> (Hotel) o).collect(Collectors.toList());
-            return cachedHotels.toArray(new Hotel[0]);
+            return objects.stream().map(Hotel.class::cast).toArray(Hotel[]::new);
         }
 
         List<String> hotelList = this.dbAccess.getObjects(42, name);
@@ -29,7 +27,7 @@ public class HotelRetrieval implements HotelSuche{
         for(int i = 0; i + 2 < hotelList.size(); i += 3){
             hotels.add(new Hotel(hotelList.get(i), hotelList.get(i+1), hotelList.get(i+2)));
         }
-        this.caching.cacheResult(name, hotels.stream().map(o -> (Object) o).collect(Collectors.toList()));
+        this.caching.cacheResult(name, hotels.stream().map(Object.class::cast).collect(Collectors.toList()));
         return hotels.toArray(new Hotel[0]);
     }
 

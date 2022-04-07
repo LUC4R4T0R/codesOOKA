@@ -1,6 +1,5 @@
 package org.bonn.ooka.buchungssystem.ss2022;
 
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
