@@ -32,6 +32,10 @@ public class HotelRetrieval implements HotelSuche{
     }
 
     public void openSession(){
+        this.dbAccess.openConnection();
+    }
 
+    public void closeSession() {
+        this.dbAccess.closeConnection();
     }
 }
